@@ -28,7 +28,16 @@ const CustomerComponent = (props) => {
     <div>
       <ul>
         {Users.map((user) => {
-          return <CustomerItem name={user.name}></CustomerItem>;
+          return (
+            <CustomerItem
+              username={user.username}
+              name={user.name}
+              address={user.address}
+              birthdate={user.birthdate}
+              email={user.email}
+              accounts={user.accounts}
+            ></CustomerItem>
+          );
         })}
       </ul>
       {console.log(Users)}
