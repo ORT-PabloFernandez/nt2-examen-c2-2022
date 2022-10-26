@@ -1,24 +1,31 @@
-import logo from './logo.svg';
+import React from 'react';
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import './App.css';
+import Customers from './views/CustomerList';
+import CustomersGold from './views/CustomerListGold';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <Switch>
+        <Route path="/" exact>
+          <div>
+            <h1>Parcial PNT2</h1>
+            <h2>Ezequiel Matias Hoyos Souto</h2>
+            <a href='/customers'>Listado de Clientes</a>
+            <br></br>
+            <a href='/customersGold'>Listado de Clientes Gold</a>
+          </div>
+        </Route>
+        <Route path="/customers" exact>
+            <Customers></Customers>
+        </Route>
+        <Route path="/customersGold" exact>
+            <CustomersGold></CustomersGold>
+        </Route>
+      </Switch>
+    </Router>
+    
   );
 }
 
