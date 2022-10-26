@@ -23,8 +23,6 @@ const UsersComponent = (props) => {
     fetchData();
   }, []);
 
-  useEffect(() => {});
-
   return (
     <div>
       <ul>

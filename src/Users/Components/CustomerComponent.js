@@ -22,8 +22,6 @@ const CustomerComponent = (props) => {
     fetchData();
   }, []);
 
-  useEffect(() => {});
-
   return (
     <div>
       <ul>
