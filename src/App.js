@@ -1,24 +1,28 @@
-import logo from './logo.svg';
 import './App.css';
+import "bootstrap/dist/css/bootstrap.min.css";
+import PaginaPrincipal from "./components/PaginaPrincipal";
+import {BrowserRouter as Router, Route, Switch} from "react-router-dom";
+import GoldCustomers from "./components/goldCustomers";
+import Customer from "./components/customer";
+
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+      <Router>
+        <div>
+          <Switch>
+            <Route path="/customer/:userId">
+              <Customer />
+            </Route>
+            <Route path="/goldcustomers">
+              <GoldCustomers />
+            </Route>
+          <Route path="/">
+              <PaginaPrincipal />
+          </Route>
+          </Switch>
+        </div>
+      </Router>
   );
 }
 
