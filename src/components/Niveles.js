@@ -1,9 +1,8 @@
 import React, { useState, useEffect } from "react";
-import { Card } from "react-bootstrap";
 
 const url = "http://127.0.0.1:3001/api/customers/";
 
-const Customer = (props) => {
+const Nivel = (props) => {
   const [clientes, setClientes] = useState([]);
 
   useEffect(() => {
@@ -24,19 +23,16 @@ const Customer = (props) => {
     fetchData();
   }, []);
 
-  const cliente = clientes.filter((cliente) => cliente.email == props.email);
+  const clienteNivel = clientes.filter(
+    (cliente) => cliente.tier_and_details.tier == props.Nivel
+  );
 
   return (
     <div>
-      <h2>name = {cliente[0].name}</h2>
-      <h2>address = {cliente[0].address}</h2>
-      <h2>birthdate = {cliente[0].birthdate}</h2>
-      <h2>email = {cliente[0].email}</h2>
-      <h2>Acountos =</h2>
-      {cliente.acounts.map((acount) => (
-        <h3>{acount}</h3>
-      ))}
+      <h2>{clienteNivel[0].tier_and_details.tier}</h2>
+      <h3>{clienteNivel[0].tier_and_details.benefits}</h3>
+      <Customers clientes={clienteNivel}></Customers>
     </div>
   );
 };
-export default Customer;
+export default Nivel;

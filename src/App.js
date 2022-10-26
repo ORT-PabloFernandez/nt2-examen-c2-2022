@@ -20,6 +20,9 @@ function App() {
         <Route path="/Customer" exact>
           <Customer email={"stacey30@gmail.com"} />
         </Route>
+        <Route path="/Niveles" exact>
+          <Customer nivel={"Gold"} />
+        </Route>
       </Switch>
     </Router>
   );
