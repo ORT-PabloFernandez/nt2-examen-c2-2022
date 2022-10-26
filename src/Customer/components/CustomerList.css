@@ -1,0 +1,5 @@
+.customers-list {
+  max-width: 50rem;
+  display: flex;
+  flex-wrap: wrap;
+}
