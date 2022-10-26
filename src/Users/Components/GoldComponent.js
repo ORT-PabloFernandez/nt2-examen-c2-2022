@@ -38,15 +38,32 @@ const GoldComponent = (props) => {
       user.tier_and_details.filter((item) => item.tier === "Gold").length > 0
   );
 
+  let newArray = [];
+
+  for (let index = 0; index < gold.length; index++) {
+    for (
+      let index2 = 0;
+      index2 < gold[index].tier_and_details.length;
+      index2++
+    ) {
+      if (gold[index].tier_and_details[index2].tier === "Gold") {
+        newArray.push({
+          name: gold[index].name,
+          tier: gold[index].tier_and_details[index2].tier,
+          benefits: gold[index].tier_and_details[index2].benefits,
+        });
+      }
+    }
+  }
+
+  //  console.log(newArray);
+
   return (
     <div>
       <ul>
-        {gold.map((user) => {
+        {newArray.map((user) => {
           return (
-            <GoldItem
-              name={user.name}
-              tier_and_details={user.tier_and_details}
-            ></GoldItem>
+            <GoldItem name={user.name} benefits={user.benefits}></GoldItem>
           );
         })}
       </ul>
