@@ -1,25 +1,22 @@
-import logo from './logo.svg';
-import './App.css';
-
+import React, { useState, useEffect } from "react";
+import "./App.css";
+import Home from "./costumers/pages/Home";
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+  const PAGE = 3;
+  const SIZE = 10;
+  const [costumers, setCostumers] = useState([]);
+
+  function fetchCosutmers(size, pages) {
+    fetch(`http://localhost:3002/api/customers?pageSize=${SIZE}&page=${PAGE}`)
+      .then((result) => result.json())
+      .then((data) => setCostumers(data));
+  }
+
+  useEffect(() => {
+    fetchCosutmers(SIZE, PAGE);
+  }, []);
+  console.log(costumers);
+  return <Home costumers={costumers}></Home>;
 }
 
 export default App;
