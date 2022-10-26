@@ -11,12 +11,52 @@ function App() {
       .then((result) => result.json())
       .then((data) => setCostumers(data));
   }
+  const [pagina, setPaginas] = useState(PAGE);
+  const prev = pagina - 1;
+  const next = pagina + 1;
+  function onPrev() {
+    if (prev < 1) {
+    } else {
+      setPaginas(prev);
+      fetchCosutmers(SIZE, prev);
+    }
+  }
+
+  function onNext() {
+    setPaginas(next);
+
+    fetchCosutmers(SIZE, next);
+  }
+  const handlerPrev = () => {
+    onPrev();
+  };
+
+  const handlerNext = () => {
+    onNext();
+  };
 
   useEffect(() => {
     fetchCosutmers(SIZE, PAGE);
   }, []);
   console.log(costumers);
-  return <Home costumers={costumers}></Home>;
+  return (
+    <div>
+      <ul className="pagination justify-content-center">
+        <li>
+          <button className="page-link" onClick={handlerPrev}>
+            Previous
+          </button>
+        </li>
+
+        <li>
+          <button className="page-link" onClick={handlerNext}>
+            Next
+          </button>
+        </li>
+      </ul>
+      <Home costumers={costumers}></Home>
+    </div>
+  );
 }
 
 export default App;
