@@ -7,7 +7,7 @@ function App() {
   const [costumers, setCostumers] = useState([]);
 
   function fetchCosutmers(size, pages) {
-    fetch(`http://localhost:3002/api/customers?pageSize=${SIZE}&page=${PAGE}`)
+    fetch(`http://localhost:3002/api/customers?pageSize=${size}&page=${pages}`)
       .then((result) => result.json())
       .then((data) => setCostumers(data));
   }
