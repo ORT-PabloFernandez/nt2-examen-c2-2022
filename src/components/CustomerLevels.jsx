@@ -22,9 +22,10 @@ const CustomerLevels = ({data}) => {
         <Card.Header>{data.username}'s level:</Card.Header>
         <Card.Body>
         <ListGroup variant="flush">
-            <ListGroup.Item> accounts: {data.accounts.map((acc) => (
-                <Badge bg="primary">{acc}</Badge> ))}
-            </ListGroup.Item>
+        <ListGroup.Item> name: {data.name}</ListGroup.Item>
+        <ListGroup.Item> accounts: {data.accounts.map((acc) => (
+            <Badge bg="primary">{acc}</Badge> ))}
+        </ListGroup.Item>
             {benefits.map((ben) => (
                 <ListGroup.Item>
                     {ben.map((b)=>(

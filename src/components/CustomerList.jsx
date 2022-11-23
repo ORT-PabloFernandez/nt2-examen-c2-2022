@@ -18,9 +18,9 @@ const CustomerList = (props) => {
     // </Row>
     <div style={{background: 'grey'}}>
       <h1 style={{margin: 'auto', padding: '40px 0px 20px 0px', textAlign: 'center', color: 'white'}}>List of Customers</h1>
-      {/* <div style={{display:'flex', }}> */}
-      {cant.map((customer) => <Customer data = {customer}></Customer> )}
-      {/* </div> */}
+      <div style={{display:'flex', flexWrap: 'wrap', justifyContent: 'center'}}>
+      {cant.map((customer) => <Customer data = {customer} style={{minWidth: '270px'}}></Customer> )}
+      </div>
     </div>
   );
 }
