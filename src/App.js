@@ -1,24 +1,31 @@
-import logo from './logo.svg';
 import './App.css';
+import Customer from './components/Customer';
+import CustomerList from './components/CustomerList';
+import CustomerLevelList from './components/CustomerLevelList';
+
+import { useState, useEffect} from 'react'
 
 function App() {
+  const url = 'http://localhost:3000/api/customers?pageSize=20&page=3'
+  const [data, setData] = useState([])
+
+  useEffect(() => {
+    try{
+      fetch(url)
+      .then((res) => res.json())
+      .then((res) => setData(res))
+    }catch(error){
+      console.error(error);
+    }
+  }, [])
+  
+
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <CustomerList customers = {data} ></CustomerList>
+      <CustomerLevelList customers = {data}></CustomerLevelList>
+    </>
   );
 }
 
